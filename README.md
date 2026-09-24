@@ -32,6 +32,7 @@ Supported operations are addition, subtraction, multiplication and division. You
 
 - Go 1.22 or newer
 - Node.js 20.19+ or 22.12+, with npm
+- Docker with Docker Compose (optional; only needed for [Running with Docker](#running-with-docker))
 
 ## Running Locally
 
@@ -72,6 +73,22 @@ Open http://localhost:5173. The Vite dev server forwards requests under `/api` t
 | `+` `-` `*` `/` | Add, subtract, multiply, divide |
 | `Enter` or `=` | Calculate |
 | `Escape` | Clear |
+
+## Running with Docker
+
+The full application can also be started with Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+Open http://localhost:3000. nginx serves the frontend and forwards `/api` requests to the backend over the Docker network. The backend isn't published to the host.
+
+To stop and remove the containers:
+
+```bash
+docker compose down
+```
 
 ## Running Tests
 
