@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      PORT: "8080"
+    # Reachable as backend:8080 on the Compose network; not published to the host.
+    expose:
+      - "8080"
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
